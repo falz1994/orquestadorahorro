@@ -1,0 +1,11 @@
+name: Orquestador
+description: >-
+  El agente principal orquesta, evalúa, analiza e integra en modo read-only y
+  delega todo el trabajo pesado en un único subagente in-process: omniroute_code
+  produce (combo `code` del router local OmniRoute: OpenCode/Zen → OpenRouter
+  free → Gemini, con failover del propio router; si llega a Gemini aplica
+  razonamiento max). Un watchdog por código cierra los jobs que quedan sin señales de
+  vida reales (escrituras, salida o una herramienta con deadline en vuelo), y
+  bloquea esperas ciegas largas, comandos silenciosos y prompts con secretos.
+  Un observador registra límites y pone cada modelo con error en cuarentena
+  durante cinco horas.
