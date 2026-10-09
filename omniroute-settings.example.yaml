@@ -1,0 +1,28 @@
+# Merge this provider fragment into ~/.dsh/settings.yaml.
+# This file contains names and local endpoints only; never add credentials here.
+
+llm-pi-ai:
+  providers:
+    omniroute:
+      apiKeyEnv: OMNIROUTE_API_KEY
+      api: openai-completions
+      baseURL: http://127.0.0.1:20128/v1
+      models:
+        - id: code
+          name: "OmniRoute code (combo)"
+          contextWindow: 262144
+          maxTokens: 16000
+          reasoningEfforts:
+            low: low
+            high: high
+            max: max
+        - id: free
+          name: "OmniRoute free (combo)"
+          contextWindow: 262144
+          maxTokens: 16000
+
+subagent-model-selection:
+  enabled: true
+  allowedModels:
+    - provider: omniroute
+      model: code
